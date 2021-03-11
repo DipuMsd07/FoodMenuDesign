@@ -89,6 +89,8 @@ const menu = [
   },
 ];
 
+let fullMenu = document.querySelector('.menu');
+
 let sectionCenter = document.querySelector('.section-center');
 
 let filterBtns = document.querySelectorAll('.filter-btn');
@@ -160,12 +162,22 @@ function filterCategory(){
       });
       if(category == 'all')
       {
-        document.body.style.height = `200vh`;
+        fullMenu.classList.add('height');
         displayMenu(menu);
       }
       else
       {
-        document.body.style.height = `100vh`;
+        var no = menuCategory.length; 
+        var total_width = screen.width;
+        if(total_width <= 700){
+          fullMenu.classList.add('height');
+        }
+        if(total_width > 700){
+          fullMenu.classList.remove('height');
+        }
+        if(no >= 4){
+          fullMenu.classList.add('height');
+        }
         displayMenu(menuCategory);
       }
     });
